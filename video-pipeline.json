@@ -1,0 +1,20 @@
+# montage.json
+{
+  "pipeline": {
+    "name": "video-pipeline"
+  },
+  "description": "A pipeline that takes an input video, and exports a series of images",
+  "input": {
+    "cross": [ {
+      "pfs": {
+          "repo": "videos",
+          "glob": "/*"
+      }
+    }]
+  },
+  "transform": {
+    "cmd": [ "python3 /workspace/video-edges.py" ],
+      "image": "burningion/ffmpeg-pytorch-pygotham:1.6",
+      "debug": true
+  }
+}
