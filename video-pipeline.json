@@ -13,8 +13,8 @@
     }]
   },
   "transform": {
-    "cmd": [ "python3 /workspace/video-edges.py" ],
-      "image": "burningion/ffmpeg-pytorch-pygotham:1.6",
+    "cmd": [ "/workspace/video-edges.py" ],
+      "image": "burningion/ffmpeg-pytorch-pygotham:1.9",
       "debug": true
   }
 }

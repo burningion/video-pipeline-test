@@ -1,3 +1,4 @@
+#!/opt/conda/bin/python3
 import cv2
 import numpy as np
 import os
@@ -8,12 +9,13 @@ def make_edges(image, frameno, videofile):
     edges = cv2.Canny(image,100,200)
     plt.imsave(os.path.join("/pfs/out", f"{videofile}-{frameno:09}.png"), edges, cmap = 'gray')
 
-print("Opening up the globber")
-print(glob.glob("/pfs/videos/*.mov"))
-for filename in glob.glob("/pfs/videos/*.mov"):
-    print("Opening f{filename}")
-    cap = cv2.VideoCapture(filename)
-    assert cap.isOpened(), 'Cannot capture source'
+for filename in glob.glob("/pfs/videos/*"):
+    print(f"Opening {filename}")
+    try:
+        cap = cv2.VideoCapture(filename)
+        assert cap.isOpened(), 'Cannot capture source'
+    except:
+        continue
     tail = os.path.split(filename)[1]
     videofile = os.path.splitext(tail)[0]
     frameno = 0
